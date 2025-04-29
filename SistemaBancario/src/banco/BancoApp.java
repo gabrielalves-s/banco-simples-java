@@ -15,7 +15,7 @@ public class BancoApp {
     	
     	
         while (true) {
-            System.out.println("\n=== Banco Simples ===");
+            System.out.println("------------- Banco Simples -------------");
             System.out.println("1. Criar nova conta");
             System.out.println("2. Fazer login");
             System.out.println("3. Sair");
@@ -42,7 +42,7 @@ public class BancoApp {
     }
 
     private static void criarConta() {
-        System.out.println("\n=== Criação de Conta ===");
+        System.out.println("------------- Criação de Conta -------------");
 
         System.out.print("Digite o nome do titular: ");
         String nomeTitular = scanner.nextLine();
@@ -61,7 +61,7 @@ public class BancoApp {
     }
 
     private static void fazerLogin() {
-        System.out.println("\n=== Tela de Login ===");
+        System.out.println("------------- Tela de Login -------------");
 
         System.out.print("Digite o número da conta: ");
         int numeroContaLogin = scanner.nextInt();
@@ -93,7 +93,7 @@ public class BancoApp {
         boolean logado = true;
         
         while (logado) {
-            System.out.println("\n=== Menu da Conta ===");
+            System.out.println("------------- Menu da Conta -------------");
             System.out.println("1. Consultar saldo");
             System.out.println("2. Sacar dinheiro");
             System.out.println("3. Depositar dinheiro");
