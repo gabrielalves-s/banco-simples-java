@@ -1,26 +1,26 @@
 package banco;
 
 public class ContaBancaria {
-	
-		String nomeTitular;
-		int numeroConta;
-		double saldo;
+		// Atributos privados da conta
+		private String nomeTitular;
+		private int numeroConta;
+		private double saldo;
 		private String senha;
 		
 		// Construtor 
 		
 		  public ContaBancaria(String nomeTitular, int numeroConta, String senha) {
-			this.nomeTitular = nomeTitular;
-			this.numeroConta = numeroConta;
-			this.senha = senha;
-			this.saldo = 0.0;
+			this.nomeTitular = nomeTitular; // Atribui o nome do titular
+			this.numeroConta = numeroConta; // Atribui o número da conta
+			this.senha = senha; // Atribui a senha da conta
+			this.saldo = 0.0; // Inicializa o saldo com 0
 		}
 		  
 		    
-		    // Getters e Setters 
-		    
+		    // Métodos Getters - para acessar informações da conta
+	
 			public String getSenha() {
-				return senha;
+				return senha; // Retorna a senha da conta
 			}
 
 			public void setSenha(String senha) {
@@ -28,32 +28,32 @@ public class ContaBancaria {
 			}
 			
 		    public String getNomeTitular() {
-		        return nomeTitular;
+		        return nomeTitular; // Retorna o nome do titular
 		    }
 		    
-		    public int getNumeroConta() {
-		        return numeroConta;
+		    public int getNumeroConta() { 
+		        return numeroConta; // Retorna o número da conta
 		    }
 
 		    public double getSaldo() {
-		        return saldo;
+		        return saldo; // Retorna o saldo da conta
 		    }
 		    
 			  // Métodos
-			  
+	
+			  // Método para depositar dinheiro na conta
 			 public void depositar(double valor) {
-				  if(valor > 0 ) {
-					  saldo += valor;
-					  System.out.println("Depósito de R$ " + valor + " realizado com sucesso.");
+				  if(valor > 0 ) { // Só aceita valores positivos
+					  saldo += valor; // Adiciona o valor ao saldo
 				  }
 			  }
-			  
-			  public boolean sacar(double valor) {
-			        if (valor > 0 && saldo >= valor) {
-			            saldo -= valor;
-			            return true;
+			   // Método para sacar dinheiro da conta
+			  public boolean sacar(double valor) { 
+			        if (valor > 0 && saldo >= valor) { // Verifica se o valor é positivo e se há saldo suficiente
+			            saldo -= valor; // Diminui o saldo
+			            return true; // Retorna true se o saque foi bem-sucedido
 			        } else {
-			            return false;
+			            return false; // Retorna false se não foi possível sacar
 			        }
 			    }
 
