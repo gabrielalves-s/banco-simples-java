@@ -5,15 +5,17 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class BancoApp {
-	
-	
+
+	// Lista para armazenar todas as contas bancárias criadas
     private static ArrayList<ContaBancaria> contas = new ArrayList<>();
+
+	// Scanner para ler entradas do usuário, configurado para aceitar números com ponto
     private static Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
     
     
     public static void main(String[] args) {
     	
-    	
+    	// Laço infinito para manter o menu principal rodando
         while (true) {
             System.out.println("------------- Banco Simples -------------");
             System.out.println("1. Criar nova conta");
@@ -21,26 +23,26 @@ public class BancoApp {
             System.out.println("3. Sair");
             System.out.print("Escolha uma opção: ");
             
-            int opcao = scanner.nextInt();
+            int opcao = scanner.nextInt(); // Lê a opção escolhida
             scanner.nextLine(); // limpar o ENTER
 
             switch (opcao) {
                 case 1:
-                    criarConta();
+                    criarConta(); // Chama método para criar uma nova conta
                     break;
                 case 2:
-                    fazerLogin();
+                    fazerLogin(); // Chama método para fazer login
                     break;
                 case 3:
                     System.out.println("Saindo... Obrigado por usar nosso banco!");
-                    System.exit(0);
+                    System.exit(0); // Encerra o programa
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
             }
         }
     }
-
+	 // Método que cria uma nova conta bancária
     private static void criarConta() {
         System.out.println("------------- Criação de Conta -------------");
 
@@ -54,12 +56,14 @@ public class BancoApp {
         System.out.print("Crie uma senha para a conta: ");
         String senha = scanner.nextLine();
 
-        ContaBancaria novaConta = new ContaBancaria(nomeTitular, numeroConta, senha);
-        contas.add(novaConta);
+        ContaBancaria novaConta = new ContaBancaria(nomeTitular, numeroConta, senha); // Cria um novo objeto ContaBancaria com os dados fornecidos
+        contas.add(novaConta); // Adiciona a nova conta à lista de contas
+	    
 
         System.out.println("Conta criada com sucesso!");
     }
-
+	
+	 // Método para realizar o login de um usuário
     private static void fazerLogin() {
         System.out.println("------------- Tela de Login -------------");
 
@@ -70,29 +74,29 @@ public class BancoApp {
         System.out.print("Digite sua senha: ");
         String senhaDigitada = scanner.nextLine();
 
-        ContaBancaria contaEncontrada = encontrarConta(numeroContaLogin);
+        ContaBancaria contaEncontrada = encontrarConta(numeroContaLogin); // Procura a conta correspondente na lista
 
-        if (contaEncontrada != null && contaEncontrada.getSenha().equals(senhaDigitada)) {
+        if (contaEncontrada != null && contaEncontrada.getSenha().equals(senhaDigitada)) { // Se encontrou a conta e a senha está correta
             System.out.println("Login bem-sucedido! Bem-vindo(a), " + contaEncontrada.getNomeTitular() + "!");
-            menuConta(contaEncontrada);
+            menuConta(contaEncontrada); // Mostra o menu de operações para a conta logada
         } else {
-            System.out.println("Número da conta ou senha incorretos.");
+            System.out.println("Número da conta ou senha incorretos."); // Falha no login
         }
     }
 
-    private static ContaBancaria encontrarConta(int numeroConta) {
-        for (ContaBancaria conta : contas) {
-            if (conta.getNumeroConta() == numeroConta) {
+    private static ContaBancaria encontrarConta(int numeroConta) { // Método para buscar uma conta na lista pelo número da conta
+        for (ContaBancaria conta : contas) { // Percorre todas as contas
+            if (conta.getNumeroConta() == numeroConta) { // Se encontrar o número correspondente
                 return conta;
             }
         }
-        return null;
+        return null; // Se não encontrar, retorna null
     }
 
-    private static void menuConta(ContaBancaria contaLogada) {
+    private static void menuConta(ContaBancaria contaLogada) { // Menu de operações para quem já está logado na conta
         boolean logado = true;
         
-        while (logado) {
+        while (logado) { // Mantém o usuário no menu da conta até ele optar por sair
             System.out.println("------------- Menu da Conta -------------");
             System.out.println("1. Consultar saldo");
             System.out.println("2. Sacar dinheiro");
@@ -105,7 +109,7 @@ public class BancoApp {
 
             switch (opcaoConta) {
                 case 1:
-                    System.out.println("Saldo atual: R$" + contaLogada.getSaldo());
+                    System.out.println("Saldo atual: R$" + contaLogada.getSaldo()); // Exibe o saldo da conta
                     break;
                 case 2:
                     System.out.print("Digite o valor para saque: R$");
